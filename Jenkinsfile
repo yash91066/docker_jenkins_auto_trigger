@@ -93,13 +93,13 @@ pipeline {
             }
         }
         
-        // stage('Deploy to ecs') {
-        //   steps {
-        //     withAWS(credentials: 'awscreds', region: 'ca-central-1') {
-        //     sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
-        //       }
-        //   }
-        // }
+        stage('Deploy to ecs') {
+          steps {
+            withAWS(credentials: 'awscreds', region: 'ca-central-1') {
+            sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+              }
+          }
+        }
     }
     
     post {
