@@ -66,7 +66,10 @@ pipeline {
         //             waitForQualityGate abortPipeline: true
         //         }
         //     }
+        // 
         // }
+
+        
 
         stage('Build App Image') {
             steps {
