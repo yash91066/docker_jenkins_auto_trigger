@@ -36,71 +36,71 @@ pipeline {
             }
         }
 
-    //     stage('Checkstyle Analysis') {
-    //         steps {
-    //             sh 'mvn checkstyle:checkstyle'
-    //         }
-    //     }
+        // stage('Checkstyle Analysis') {
+        //     steps {
+        //         sh 'mvn checkstyle:checkstyle'
+        //     }
+        // }
 
-    //     stage("Sonar Code Analysis") {
-    //         environment {
-    //             scannerHome = tool 'sonar6.2'
-    //         }
-    //         steps {
-    //             withSonarQubeEnv('sonarserver') {
-    //                 sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=group_project \
-    //                   -Dsonar.projectName=group_project \
-    //                   -Dsonar.projectVersion=1.0 \
-    //                   -Dsonar.sources=src/ \
-    //                   -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
-    //                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
-    //                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
-    //                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
-    //             }
-    //         }
-    //     }
+        // stage("Sonar Code Analysis") {
+        //     environment {
+        //         scannerHome = tool 'sonar6.2'
+        //     }
+        //     steps {
+        //         withSonarQubeEnv('sonarserver') {
+        //             sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=group_project \
+        //               -Dsonar.projectName=group_project \
+        //               -Dsonar.projectVersion=1.0 \
+        //               -Dsonar.sources=src/ \
+        //               -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
+        //               -Dsonar.junit.reportsPath=target/surefire-reports/ \
+        //               -Dsonar.jacoco.reportsPath=target/jacoco.exec \
+        //               -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+        //         }
+        //     }
+        // }
 
-    //     // stage("Quality Gate") {
-    //     //     steps {
-    //     //         timeout(time: 1, unit: 'HOURS') {
-    //     //             waitForQualityGate abortPipeline: true
-    //     //         }
-    //     //     }
-    //     // }
+        // stage("Quality Gate") {
+        //     steps {
+        //         timeout(time: 1, unit: 'HOURS') {
+        //             waitForQualityGate abortPipeline: true
+        //         }
+        //     }
+        // }
 
-    //     stage('Build App Image') {
-    //         steps {
-    //             script {
-    //                 dockerImage = docker.build("${appRegistry}:$BUILD_NUMBER", "./Docker-files/app/multistage/")
-    //             }
-    //         }
-    //     }
+        // stage('Build App Image') {
+        //     steps {
+        //         script {
+        //             dockerImage = docker.build("${appRegistry}:$BUILD_NUMBER", "./Docker-files/app/multistage/")
+        //         }
+        //     }
+        // }
 
-    //     stage('Upload App Image') {
-    //         steps {
-    //             script {
-    //                 docker.withRegistry(groupRegistry, registryCredential) {
-    //                     dockerImage.push("$BUILD_NUMBER")
-    //                     dockerImage.push('latest')
-    //                 }
-    //             }
-    //         }
-    //     }
+        // stage('Upload App Image') {
+        //     steps {
+        //         script {
+        //             docker.withRegistry(groupRegistry, registryCredential) {
+        //                 dockerImage.push("$BUILD_NUMBER")
+        //                 dockerImage.push('latest')
+        //             }
+        //         }
+        //     }
+        // }
 
-    //     stage("Remove Container Images") {
-    //         steps {
-    //             sh 'docker rmi -f $(docker images -a -q) || true'
-    //         }
-    //     }
+        // stage("Remove Container Images") {
+        //     steps {
+        //         sh 'docker rmi -f $(docker images -a -q) || true'
+        //     }
+        // }
         
-    //     stage('Deploy to ecs') {
-    //       steps {
-    //         withAWS(credentials: 'awscreds', region: 'ca-central-1') {
-    //         sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
-    //           }
-    //       }
-    //     }
-    // }
+        // stage('Deploy to ecs') {
+        //   steps {
+        //     withAWS(credentials: 'awscreds', region: 'ca-central-1') {
+        //     sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+        //       }
+        //   }
+        // }
+    }
     
     post {
         always {
